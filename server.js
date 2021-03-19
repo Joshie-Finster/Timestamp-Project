@@ -33,5 +33,6 @@ var listener = app.listen(process.env.PORT || 3000, function () {
 
 let responseObject ={};
 app.get('/api/timestamp/:date_string',(req,res) =>{
+  let date_string = req.params.date_string
   res.json(responseObject)
 })
