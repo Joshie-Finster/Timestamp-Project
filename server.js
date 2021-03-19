@@ -35,5 +35,9 @@ let responseObject ={}
 
 app.get('/api/timestamp/:date_string',(req,res) =>{
   let date_string = req.params.date_string;
-  res.json(date_string)
+
+  if (date_string.includes('-')){
+    responseObject.unix = new Date(date_string).getTime()
+  }
+  res.json(responseObject)
 })
