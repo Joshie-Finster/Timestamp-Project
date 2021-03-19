@@ -38,7 +38,7 @@ app.get('/api/timestamp',(req,res)=>{
 app.get("/api/timestamp/:date_string", (req, res) => {
   let dateString = req.params.date_string;
 
-  if (/\d{5,10000}/.test(dateString)) {
+  if (parseInt(dateString) < 10000) {
     const dateInt = parseInt(dateString);
 
     res.json({ unix: new Date(dateInt).getTime(), utc: new Date(dateInt).toUTCString() });
