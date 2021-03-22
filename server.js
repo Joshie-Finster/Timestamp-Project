@@ -45,11 +45,14 @@ app.get("/api/timestamp/:date_string", (req, res) => {
     res.json({ unix: dateInt.valueOf(), utc: new Date(dateInt).toUTCString() });
   } else {
     let dateObject = new Date(dateString);
+    console.log(dateObject)
 
     if (dateObject.toString() === "Invalid Date") {
       res.json({ error: "Invalid Date" });
     } else {
-      res.json({ unix: new Date(dateObject.valueOf()).getTime(), utc: dateObject.toUTCString() });
+      console.log(Date.parse(dateObject));
+      res.json({ unix: Date.parse(dateObject), utc: dateObject.toUTCString() });
+
     }
   }
 });
