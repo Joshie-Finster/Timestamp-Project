@@ -44,9 +44,9 @@ app.get("/api/timestamp/:date_string", (req, res) => {
 
     res.json({ unix: dateInt.valueOf(), utc: new Date(dateInt).toUTCString() });
   } else {
-    let dateObject = Date.parse(dateString);
+    let dateObject = new Date(dateString);
 
-    if (dateObject.toString() === "NaN") {
+    if (dateObject.toString() === "Invalid Date") {
       res.json({ error: "Invalid Date" });
     } else {
       res.json({ unix: new Date(dateObject.valueOf()).getTime(), utc: dateObject.toUTCString() });
